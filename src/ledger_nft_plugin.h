@@ -11,6 +11,10 @@
 #define PARAMETER_LENGTH 32
 #define RUN_APPLICATION  1
 
+// Plugin uses 0x00000 as a dummy address to reprecent ETH.
+extern const uint8_t NULL_ETH_ADDRESS[ADDRESS_LENGTH];
+
+#define ADDRESS_IS_NETWORK_TOKEN(_addr) (!memcmp(_addr, NULL_ETH_ADDRESS, ADDRESS_LENGTH))
 typedef enum {
     MINT,
     PRE_SALE_MINT,
@@ -18,12 +22,14 @@ typedef enum {
 
 // Enumeration used to parse the smart contract data.
 typedef enum {
+    PAYABLE_AMOUNT,
     AMOUNT,
     NONE,
 } parameter;
 
 typedef enum {
     AMOUNT_SCREEN,
+    PAYABLE_AMOUNT_SCREEN,
     ERROR,
 } screens_t;
 
@@ -33,7 +39,9 @@ extern const uint8_t *const LEDGER_NFT_SELECTORS[NUM_SELECTORS];
 typedef struct context_t {
     // For display.
     uint8_t amount[PARAMETER_LENGTH];
-    char ticker[MAX_TICKER_LEN];
+    uint8_t payable_amount[PARAMETER_LENGTH];
+    uint8_t contract_address_sent[ADDRESS_LENGTH];
+    char ticker_sent[MAX_TICKER_LEN];
 
     // For parsing data.
     uint16_t offset;
@@ -56,3 +64,13 @@ void handle_query_contract_ui(void *parameters);
 void handle_init_contract(void *parameters);
 void handle_finalize(void *parameters);
 void handle_query_contract_id(void *parameters);
+
+static inline void printf_hex_array(const char *title __attribute__((unused)),
+                                    size_t len __attribute__((unused)),
+                                    const uint8_t *data __attribute__((unused))) {
+    PRINTF(title);
+    for (size_t i = 0; i < len; ++i) {
+        PRINTF("%02x", data[i]);
+    };
+    PRINTF("\n");
+}

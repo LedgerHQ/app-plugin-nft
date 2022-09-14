@@ -25,7 +25,7 @@ function generate_plugin_config(testNetwork) {
 	var fs = require('fs');
 	var files = fs.readdirSync(`networks/${testNetwork}/${pluginFolder}/abis/`);
 
-	// `contracts_to_abis` holds a maping of contract addresses to abis
+	// `contracts_to_abis` holds a mapping of contract addresses to abis
 	let contracts_to_abis = {};
 	for (let abiFileName of files) {
 		assert(abiFileName.toLocaleLowerCase() == abiFileName, `FAILED: File ${abiFileName} should be lower case.`);

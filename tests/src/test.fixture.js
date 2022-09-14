@@ -128,7 +128,7 @@ function zemu(device, func, testNetwork, signed = false) {
 }
 
 /**
- * Process the trasaction through the full test process in interaction with the simulator
+ * Process the transaction through the full test process in interaction with the simulator
  * @param {Eth} eth Device to test (nanos, nanox)
  * @param {function} sim Zemu simulator
  * @param {int} steps Number of steps to push right button

@@ -11,7 +11,7 @@ void handle_init_contract(void *parameters) {
 
     if (msg->pluginContextLength < sizeof(context_t)) {
         PRINTF("Plugin parameters structure is bigger than allowed size\n");
-        // msg->result = ETH_PLUGIN_RESULT_ERROR;
+        msg->result = ETH_PLUGIN_RESULT_ERROR;
         return;
     }
 
@@ -34,6 +34,7 @@ void handle_init_contract(void *parameters) {
     switch (context->selectorIndex) {
         case MINT:
         case PRE_SALE_MINT:
+            context->next_param = AMOUNT;
             break;
         default:
             PRINTF("Missing selectorIndex: %d\n", context->selectorIndex);

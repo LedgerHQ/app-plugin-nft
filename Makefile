@@ -21,15 +21,15 @@ endif
 
 include $(BOLOS_SDK)/Makefile.defines
 
-APP_LOAD_PARAMS += --appFlags 0x800 --path "44'/60'" --path "45'" --curve secp256k1
+APP_LOAD_PARAMS += --appFlags 0x800 --path "44'/60'" --path "45'" --path "44'/1'" --curve secp256k1
 APP_LOAD_PARAMS += $(COMMON_LOAD_PARAMS)
 
 APPVERSION_M     = 1
-APPVERSION_N     = 0
+APPVERSION_N     = 1
 APPVERSION_P     = 0
 APPVERSION       = $(APPVERSION_M).$(APPVERSION_N).$(APPVERSION_P)
 
-APPNAME = "LedgerNFT"
+APPNAME = "[ L ] Market"
 
 #prepare hsm generation
 ifeq ($(TARGET_NAME), TARGET_NANOS)

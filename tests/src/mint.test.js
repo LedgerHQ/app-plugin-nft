@@ -1,40 +1,39 @@
 import { processTest, populateTransaction } from "./test.fixture";
 
-const contractName = "NFTExample";
+const contractName = "MultiMintContractNFT";
 
 const testLabel = "Mint"; // <= Name of the test
 const testDirSuffix = "mint"; // <= directory to compare device snapshots to
 const signedPlugin = false;
 const testNetwork= "ethereum";
 
-const contractAddr = "0xd7aff4db67e1aa519807221a09c83ade09833992";
+const contractAddr = "0x6c304a1f99cecd3a9983001e943f3de00ed811d0";
 const chainID = 1;
 
-const selector = "0x1249c58b";
+const selector = "0xa0712d68";
+const quantity = "0000000000000000000000000000000000000000000000000000000000000005";
 
-const inputData = selector;
+const inputData = selector+quantity;
 const value = "12.0";
 
 // Create serializedTx and remove the "0x" prefix
 const serializedTx = populateTransaction(contractAddr, inputData, chainID, value);
 
-
-populateTransaction
 const devices = [
   {
     name: "nanos",
     label: "Nano S",
-    steps: 4, // <= Define the number of steps for this test case and this device
+    steps: 5, // <= Define the number of steps for this test case and this device
   },
   {
     name: "nanox",
     label: "Nano X",
-    steps: 4, // <= Define the number of steps for this test case and this device
+    steps: 5, // <= Define the number of steps for this test case and this device
   },
   {
     name: "nanosp",
     label: "Nano S+",
-    steps: 4, // <= Define the number of steps for this test case and this device
+    steps: 5, // <= Define the number of steps for this test case and this device
   },
 
 ];

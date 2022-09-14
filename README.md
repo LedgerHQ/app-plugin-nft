@@ -29,7 +29,7 @@ Smart contracts covered by this plugin are:
 
 | Network | Version | Smart Contract |
 | ---       | --- | --- |
-| Ropsten   | V0  | `0xD7aFf4dB67e1Aa519807221a09c83ADe09833992`|
+| Goerli   | V0  | `0x6c304a1f99cecd3a9983001e943f3de00ed811d0`|
 
 
 ## Build
@@ -51,6 +51,7 @@ cd LedgerHQ-app-plugin-nft/tests       # go to the tests folder in LedgerHQ-app-
 To test the plugin go to the tests folder from the "LedgerHQ-app-plugin-nft" and run the script "test"
 ```shell
 cd LedgerHQ-app-plugin-nft/tests       # go to the tests folder in LedgerHQ-app-plugin-nft
+yarn                            # install dependencies
 yarn test                       # run the script test
 ```
 ## Continuous Integration

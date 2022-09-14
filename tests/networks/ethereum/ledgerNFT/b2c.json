@@ -1,16 +1,16 @@
 {
     "chainId": 1,
-    "contracts": [
+    "contracts": [        
         {
-            "address": "0xd7aff4db67e1aa519807221a09c83ade09833992",
-            "contractName": "NFTExample",
+            "address": "0x6c304a1f99cecd3a9983001e943f3de00ed811d0",
+            "contractName": "MultiMintContractNFT",
             "selectors": {
-                "0x1249c58b": {
+                "0xa0712d68": {
                     "erc20OfInterest": [],
                     "method": "mint",
                     "plugin": "LedgerNFT"
                 },
-                "0xc111fb91": {
+                "0x827481ea": {
                     "erc20OfInterest": [],
                     "method": "preSaleMint",
                     "plugin": "LedgerNFT"

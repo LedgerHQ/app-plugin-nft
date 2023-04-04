@@ -51,6 +51,11 @@
                     "erc20OfInterest": [],
                     "method": "mintSign",
                     "plugin": "LedgerNFT"
+                },
+                "0x08dc9f42": {
+                    "erc20OfInterest": [],
+                    "method": "mint",
+                    "plugin": "LedgerNFT"
                 }
             }
         },

@@ -15,6 +15,14 @@ void handle_init_contract(void *parameters) {
         return;
     }
 
+    if (!is_tx_contract_address_supported(msg->pluginSharedRO->txContent->destination)) {
+        PRINTF("Contract 0x%.*H unsupported\n",
+               ADDRESS_LENGTH,
+               msg->pluginSharedRO->txContent->destination);
+        msg->result = ETH_PLUGIN_RESULT_ERROR;
+        return;
+    }
+
     context_t *context = (context_t *) msg->pluginContext;
 
     memset(context, 0, sizeof(*context));
@@ -37,7 +45,6 @@ void handle_init_contract(void *parameters) {
         case STABLE_MINT_SIGN:
         case STABLE_MINT:
         case MINT_SIGN:
-        case MINT_V2:
             context->next_param = AMOUNT;
             break;
         case MINT_SIGN_V2:
@@ -46,6 +53,9 @@ void handle_init_contract(void *parameters) {
         case BID:
         case FINALIZE_AUCTION:
             context->next_param = AUCTION_ID;
+            break;
+        case MINT_V2:
+            context->next_param = TOKEN_ID;
             break;
         default:
             PRINTF("Missing selectorIndex: %d\n", context->selectorIndex);

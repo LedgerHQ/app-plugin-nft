@@ -44,10 +44,13 @@ On these smart contracts, the functions covered by this plugin are:
 |StableMultiMintERC721 |stableMintSign | 0x11413601| <table><tbody> <tr><td><code>uint256 amount</code></td></tr> </tbody></table> |
 |StableMultiMintERC721 |stableMint     | 0x804b936f| <table><tbody> <tr><td><code>uint256 amount</code></td></tr> </tbody></table> |
 |StableMultiMintERC721 |mintSign       | 0xf39247a9| <table><tbody> <tr><td><code>uint256 amount</code></td></tr> </tbody></table> |
-|StableMultiMintERC721 |mint (v2)      | 0xa0712d68| <table><tbody> <tr><td><code>uint256 amount</code></td></tr> </tbody></table> |
+|StableMultiMintERC721 |mint           | 0xa0712d68| <table><tbody> <tr><td><code>uint256 amount</code></td></tr> </tbody></table> |
 |MultiMint1155         | mintSign (v2)  | 0x657bb113| <table><tbody> <tr><td><code>uint256 tokenId</code></td></tr> <tr><td><code>uint256 amount</code></td></tr> <tr><td><code>address pass</code></td></tr></tbody></table> |
 |AuctionCore           |bid            | 0x454a2ab3| <table><tbody> <tr><td><code>uint256 auctionId</code></td></tr> </tbody></table> |
 |AuctionCore           |finalizeAuction| 0xe8083863| <table><tbody> <tr><td><code>uint256 auctionId</code></td></tr> </tbody></table> |
+|MultiMint1155         | mint (v2)  | 0x08dc9f42| <table><tbody> <tr><td><code>uint256 tokenId</code></td></tr> <tr><td><code>uint256 amount</code></td></tr></tbody></table> |
+
+> **Note:** Only the third `mint` function is labelled as v2 because the first two share the same selector and behave identically.
 
 ## Build
 

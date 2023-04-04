@@ -2,8 +2,8 @@ import { processTest, populateTransaction } from "./test.fixture";
 
 const contractName = "MultiMintContractNFT";
 
-const testLabel = "Mint"; // <= Name of the test
-const testDirSuffix = "mint"; // <= directory to compare device snapshots to
+const testLabel = "MintMMNFT"; // <= Name of the test
+const testDirSuffix = "mint_mmnft"; // <= directory to compare device snapshots to
 const signedPlugin = false;
 const testNetwork = "ethereum_goerli";
 
@@ -23,7 +23,7 @@ const devices = [
     {
         name: "nanos",
         label: "Nano S",
-        steps: 5, // <= Define the number of steps for this test case and this device
+        steps: 6, // <= Define the number of steps for this test case and this device
     },
     {
         name: "nanox",

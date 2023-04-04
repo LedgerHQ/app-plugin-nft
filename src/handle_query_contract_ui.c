@@ -55,7 +55,6 @@ static screens_t get_screen(const ethQueryContractUI_t *msg,
         case STABLE_MINT_SIGN:
         case STABLE_MINT:
         case MINT_SIGN:
-        case MINT_V2:
             switch (index) {
                 case 0:
                     return AMOUNT_SCREEN;
@@ -93,6 +92,18 @@ static screens_t get_screen(const ethQueryContractUI_t *msg,
             switch (index) {
                 case 0:
                     return AUCTION_ID_SCREEN;
+                default:
+                    return ERROR;
+            }
+            break;
+        case MINT_V2:
+            switch (index) {
+                case 0:
+                    return TOKEN_ID_SCREEN;
+                case 1:
+                    return AMOUNT_SCREEN;
+                case 2:
+                    return PAYABLE_AMOUNT_SCREEN;
                 default:
                     return ERROR;
             }

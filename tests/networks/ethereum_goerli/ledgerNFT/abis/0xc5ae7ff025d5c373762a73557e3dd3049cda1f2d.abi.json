@@ -1,0 +1,209 @@
+[
+    {
+        "inputs": [],
+        "name": "AuctionFinishedBeforeFirstBid",
+        "type": "error"
+    },
+    {
+        "inputs": [],
+        "name": "AuctionHasFinished",
+        "type": "error"
+    },
+    {
+        "inputs": [],
+        "name": "AuctionHasNoBid",
+        "type": "error"
+    },
+    {
+        "inputs": [],
+        "name": "AuctionHasNotFinished",
+        "type": "error"
+    },
+    {
+        "inputs": [],
+        "name": "AuctionHaveNotStarted",
+        "type": "error"
+    },
+    {
+        "inputs": [],
+        "name": "AuctionNotFound",
+        "type": "error"
+    },
+    {
+        "inputs": [],
+        "name": "ContractLocked",
+        "type": "error"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "auctionId",
+                "type": "uint256"
+            }
+        ],
+        "name": "TokenAlreadyListed",
+        "type": "error"
+    },
+    {
+        "inputs": [],
+        "name": "ValueLessThanMinimalPrice",
+        "type": "error"
+    },
+    {
+        "inputs": [],
+        "name": "YouCanNotRebid",
+        "type": "error"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "auctionId",
+                "type": "uint256"
+            }
+        ],
+        "name": "bid",
+        "outputs": [],
+        "stateMutability": "payable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "uint256",
+                        "name": "reservePrice",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "duration",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint16",
+                        "name": "minIncrementBPS",
+                        "type": "uint16"
+                    },
+                    {
+                        "internalType": "enum IAuctionCore.AuctionStartType",
+                        "name": "startType",
+                        "type": "uint8"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "startTime",
+                        "type": "uint256"
+                    }
+                ],
+                "internalType": "struct IAuctionCore.AuctionDetails",
+                "name": "auctionDetails",
+                "type": "tuple"
+            },
+            {
+                "components": [
+                    {
+                        "internalType": "uint256",
+                        "name": "id",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "address_",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "enum TokenLib.TokenType",
+                        "name": "type_",
+                        "type": "uint8"
+                    }
+                ],
+                "internalType": "struct IAuctionCore.TokenDetails",
+                "name": "tokenDatails",
+                "type": "tuple"
+            }
+        ],
+        "name": "createAuction",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "auctionId",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "auctionId",
+                "type": "uint256"
+            }
+        ],
+        "name": "finalizeAuction",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "auctionId",
+                "type": "uint256"
+            }
+        ],
+        "name": "isAuctionFinished",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "auctionId",
+                "type": "uint256"
+            }
+        ],
+        "name": "isAuctionStarted",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "auctionId",
+                "type": "uint256"
+            }
+        ],
+        "name": "minimalPrice",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    }
+]

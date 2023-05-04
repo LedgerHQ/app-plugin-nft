@@ -17,7 +17,7 @@ echo "*Building elfs for Nano S..."
 echo "**Building app-ledger-nft for Nano S..."
 make clean BOLOS_SDK=$NANOS_SDK
 make -j DEBUG=1 BOLOS_SDK=$NANOS_SDK
-cp bin/app.elf "tests/elfs/ledger_nft_nanos.elf"
+cp bin/app.elf "tests/elfs/plugin_nanos.elf"
 
 echo "**Building app-ethereum for Nano S..."
 cd $APP_ETHEREUM
@@ -33,7 +33,7 @@ echo "*Building elfs for Nano X..."
 echo "**Building app-ledger-nft for Nano X..."
 make clean BOLOS_SDK=$NANOX_SDK
 make -j DEBUG=1 BOLOS_SDK=$NANOX_SDK
-cp bin/app.elf "tests/elfs/ledger_nft_nanox.elf"
+cp bin/app.elf "tests/elfs/plugin_nanox.elf"
 
 echo "**Building app-ethereum for Nano X..."
 cd $APP_ETHEREUM
@@ -48,7 +48,7 @@ export BOLOS_SDK="$NANOSP_SDK"
 echo "**Building app-ledger-nft for Nano S+..."
 make clean
 make -j DEBUG=1
-cp bin/app.elf "tests/elfs/ledger_nft_nanosp.elf"
+cp bin/app.elf "tests/elfs/plugin_nanosp.elf"
 
 echo "**Building app-ethereum for Nano S+..."
 cd $APP_ETHEREUM

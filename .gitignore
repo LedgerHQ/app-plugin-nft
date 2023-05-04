@@ -6,9 +6,14 @@ debug/
 dep/
 obj/
 tests/elfs/
+build
 
 # Editors
 .idea/
+.vscode
+
+# Codespace configuration
+.devcontainer
 
 # Python
 *.pyc[cod]

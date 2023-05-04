@@ -27,10 +27,30 @@ Need more information about the interface, the architecture, or general stuff ab
 
 Smart contracts covered by this plugin are:
 
-| Network | Version | Smart Contract |
-| ---       | --- | --- |
-| Goerli   | V0  | `0x6c304a1f99cecd3a9983001e943f3de00ed811d0`|
+|  Network | Version | Smart Contract | Address |
+|   ----   |   ---   |      ----      |   ---   |
+| Goerli   | V0  | MultiMintContractNFT  | `0x6c304a1f99cecd3a9983001e943f3de00ed811d0` |
+| Goerli   | V0  | StableMultiMintERC721 | `0x9ea4571a739a1d644e17d34a86e7dee97609b256` |
+| Goerli   | V0  | MultiMint1155         | `0x12b180053db389b6200e6f646949e6ab7b385d40` |
+| Goerli   | V0  | AuctionCore           | `0xc5ae7ff025d5c373762a73557e3dd3049cda1f2d` |
 
+
+On these smart contracts, the functions covered by this plugin are:
+
+|Contract |    Function   | Selector  | Displayed Parameters |
+|   ---   |    ---        | ---       | --- |
+|MultiMintContractNFT  |mint           | 0xa0712d68| <table><tbody> <tr><td><code>uint256 amount</code></td></tr> </tbody></table> |
+|MultiMintContractNFT  |preSaleMint    | 0x827481ea| <table><tbody> <tr><td><code>uint256 amount</code></td></tr> </tbody></table> |
+|StableMultiMintERC721 |stableMintSign | 0x11413601| <table><tbody> <tr><td><code>uint256 amount</code></td></tr> </tbody></table> |
+|StableMultiMintERC721 |stableMint     | 0x804b936f| <table><tbody> <tr><td><code>uint256 amount</code></td></tr> </tbody></table> |
+|StableMultiMintERC721 |mintSign       | 0xf39247a9| <table><tbody> <tr><td><code>uint256 amount</code></td></tr> </tbody></table> |
+|StableMultiMintERC721 |mint           | 0xa0712d68| <table><tbody> <tr><td><code>uint256 amount</code></td></tr> </tbody></table> |
+|MultiMint1155         | mintSign (v2)  | 0x657bb113| <table><tbody> <tr><td><code>uint256 tokenId</code></td></tr> <tr><td><code>uint256 amount</code></td></tr> <tr><td><code>address pass</code></td></tr></tbody></table> |
+|AuctionCore           |bid            | 0x454a2ab3| <table><tbody> <tr><td><code>uint256 auctionId</code></td></tr> </tbody></table> |
+|AuctionCore           |finalizeAuction| 0xe8083863| <table><tbody> <tr><td><code>uint256 auctionId</code></td></tr> </tbody></table> |
+|MultiMint1155         | mint (v2)  | 0x08dc9f42| <table><tbody> <tr><td><code>uint256 tokenId</code></td></tr> <tr><td><code>uint256 amount</code></td></tr></tbody></table> |
+
+> **Note:** Only the third `mint` function is labelled as v2 because the first two share the same selector and behave identically.
 
 ## Build
 

@@ -6,7 +6,7 @@ void handle_finalize(void *parameters) {
     msg->uiType = ETH_UI_TYPE_GENERIC;
     switch (context->selectorIndex) {
         case FINALIZE_AUCTION:
-            msg->numScreens = 1;
+            msg->numScreens = 2;
             break;
         case MINT:
         case PRE_SALE_MINT:
@@ -14,11 +14,9 @@ void handle_finalize(void *parameters) {
         case STABLE_MINT:
         case MINT_SIGN:
         case BID:
-            msg->numScreens = 2;
-            break;
-        case MINT_V2:
             msg->numScreens = 3;
             break;
+        case MINT_V2:
         case MINT_SIGN_V2:
             msg->numScreens = 4;
             break;

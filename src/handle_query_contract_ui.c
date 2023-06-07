@@ -22,13 +22,27 @@ static void set_amount_ui(ethQueryContractUI_t *msg, context_t *context) {
 
     if (context->selectorIndex == MINT_SIGN_V2) {
         // Convert the amount to a uint32_t
-        uint32_t amountInt = U4BE(context->amount, PARAMETER_LENGTH - sizeof(amountInt));
+        uint32_t amountInt;
+        if (!U4BE_from_parameter(context->amount, &amountInt)) {
+            PRINTF("Error: Invalid amount format\n");
+            msg->result = ETH_PLUGIN_RESULT_ERROR;
+            return;
+        }
+
         // Multiply by the amount by the number of tokens (there should never be a transaction with
         // multiple tokens with different amounts)
-        amountInt *= context->nb_tokens;
+        uint32_t multipliedAmount;
+        if (__builtin_umul_overflow(amountInt, context->nb_tokens, &multipliedAmount)) {
+            PRINTF("Error: Amount overflow\n");
+            msg->result = ETH_PLUGIN_RESULT_ERROR;
+            return;
+        }
+
         // Convert the amount back to a uint8_t[32] buffer
         uint8_t amountBuffer[PARAMETER_LENGTH] = {0};
-        U4BE_ENCODE(amountBuffer, sizeof(amountBuffer) - sizeof(amountInt), amountInt);
+        U4BE_ENCODE(amountBuffer,
+                    sizeof(amountBuffer) - sizeof(multipliedAmount),
+                    multipliedAmount);
 
         amountToString(amountBuffer, sizeof(amountBuffer), 0, "", msg->msg, msg->msgLength);
     } else {

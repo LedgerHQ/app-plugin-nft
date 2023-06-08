@@ -8,8 +8,8 @@ void handle_token_id(const ethPluginProvideParameter_t *msg, context_t *context)
     copy_parameter(context->token_id, msg->parameter, sizeof(context->token_id));
 }
 
-void handle_address(const ethPluginProvideParameter_t *msg, context_t *context) {
-    copy_address(context->address, msg->parameter, sizeof(context->address));
+void handle_nb_tokens(const ethPluginProvideParameter_t *msg, context_t *context) {
+    context->nb_tokens = U2BE(msg->parameter, PARAMETER_LENGTH - sizeof(context->nb_tokens));
 }
 
 void handle_mint(ethPluginProvideParameter_t *msg, context_t *context) {
@@ -32,11 +32,11 @@ void handle_mint_sign_v2(ethPluginProvideParameter_t *msg, context_t *context) {
         case OFFSET:
             // Offset to the args tuple
             context->offset = U2BE(msg->parameter, PARAMETER_LENGTH - sizeof(context->offset));
-            context->next_param = SKIP;
+            context->next_param = NB_TOKENS;
             break;
-        case SKIP:
-            // Skip the nb of objects in args tuple
-            // Already skipped 1 by going through this case
+        case NB_TOKENS:
+            // Nb of objects in args tuple
+            handle_nb_tokens(msg, context);
             context->next_param = TOKEN_ID;
             break;
         case TOKEN_ID:
@@ -45,15 +45,6 @@ void handle_mint_sign_v2(ethPluginProvideParameter_t *msg, context_t *context) {
             break;
         case AMOUNT:
             handle_amount(msg, context);
-            context->next_param = SKIP_2;
-            break;
-        case SKIP_2:
-            // Skip the tokenGateId
-            // Already skipped 1 by going through this case
-            context->next_param = ADDRESS;
-            break;
-        case ADDRESS:
-            handle_address(msg, context);
             context->next_param = NONE;
             break;
         case NONE:

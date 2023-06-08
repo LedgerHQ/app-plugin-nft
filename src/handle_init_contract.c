@@ -15,14 +15,6 @@ void handle_init_contract(void *parameters) {
         return;
     }
 
-    if (!is_tx_contract_address_supported(msg->pluginSharedRO->txContent->destination)) {
-        PRINTF("Contract 0x%.*H unsupported\n",
-               ADDRESS_LENGTH,
-               msg->pluginSharedRO->txContent->destination);
-        msg->result = ETH_PLUGIN_RESULT_ERROR;
-        return;
-    }
-
     context_t *context = (context_t *) msg->pluginContext;
 
     memset(context, 0, sizeof(*context));

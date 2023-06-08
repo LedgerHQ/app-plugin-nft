@@ -8,21 +8,8 @@ void handle_query_contract_id(void *parameters) {
 
     switch (context->selectorIndex) {
         case MINT:
-            if (is_destination_address(LEDGER_NFT_CONTRACTS[MULTI_MINT_CONTRACT_NFT],
-                                       msg->pluginSharedRO->txContent->destination)) {
-                strlcpy(msg->version, "MultiMintContractNFT - Mint", msg->versionLength);
-                break;
-            } else if (is_destination_address(LEDGER_NFT_CONTRACTS[STABLE_MULTI_MINT_ERC_721],
-                                              msg->pluginSharedRO->txContent->destination)) {
-                strlcpy(msg->version, "StableMultiMintERC721 - Mint", msg->versionLength);
-                break;
-            } else {
-                PRINTF("Contract 0x%.*H unsupported\n",
-                       ADDRESS_LENGTH,
-                       msg->pluginSharedRO->txContent->destination);
-                msg->result = ETH_PLUGIN_RESULT_ERROR;
-                return;
-            }
+            strlcpy(msg->version, "Mint", msg->versionLength);
+            break;
         case PRE_SALE_MINT:
             strlcpy(msg->version, "Presale Mint", msg->versionLength);
             break;
@@ -33,10 +20,10 @@ void handle_query_contract_id(void *parameters) {
             strlcpy(msg->version, "Stable Mint", msg->versionLength);
             break;
         case MINT_SIGN:
-            strlcpy(msg->version, "StableMultiMintERC721 - Mint Sign", msg->versionLength);
+            strlcpy(msg->version, "Mint Sign", msg->versionLength);
             break;
         case MINT_SIGN_V2:
-            strlcpy(msg->version, "MultiMint1155 - Mint Sign", msg->versionLength);
+            strlcpy(msg->version, "Mint Sign", msg->versionLength);
             break;
         case BID:
             strlcpy(msg->version, "Bid", msg->versionLength);
@@ -45,7 +32,7 @@ void handle_query_contract_id(void *parameters) {
             strlcpy(msg->version, "Finalize Auction", msg->versionLength);
             break;
         case MINT_V2:
-            strlcpy(msg->version, "MultiMint1155 - Mint", msg->versionLength);
+            strlcpy(msg->version, "Mint", msg->versionLength);
             break;
         default:
             PRINTF("Selector index: %d not supported\n", context->selectorIndex);

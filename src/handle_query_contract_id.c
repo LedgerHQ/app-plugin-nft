@@ -1,7 +1,6 @@
 #include "ledger_nft_plugin.h"
 
-void handle_query_contract_id(void *parameters) {
-    ethQueryContractID_t *msg = (ethQueryContractID_t *) parameters;
+void handle_query_contract_id(ethQueryContractID_t *msg) {
     context_t *context = (context_t *) msg->pluginContext;
 
     strlcpy(msg->name, "[ L ] Market", msg->nameLength);
